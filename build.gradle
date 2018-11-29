@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'net.hrms'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	compile "javax.mail:mail:1.4.7"
+    compile "javax.activation:activation:1.1.1"
+        compile group: 'org.apache.commons', name: 'commons-csv', version: '1.1'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.1.RELEASE') {
+        exclude(module: 'spring-boot-starter-logging')
+    }
+    
+    
+}
